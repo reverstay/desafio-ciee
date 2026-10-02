@@ -25,6 +25,9 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   }
 
   const body = await response.json().catch(() => null);
+  if (!response.ok && !body?.message && [502, 503, 504].includes(response.status)) {
+    throw new ApiError('O servidor está indisponível no momento. Tente novamente em instantes.', response.status, 'UNAVAILABLE');
+  }
   if (!response.ok) {
     throw new ApiError(
       body?.message ?? `Erro inesperado (HTTP ${response.status}).`,
