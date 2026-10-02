@@ -1,0 +1,29 @@
+{
+  "name": "cadastro-curriculos",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Cadastro de currículos com importação de PDF (desafio técnico CIEE/PR)",
+  "workspaces": [
+    "shared",
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "db:up": "docker compose up -d sqlserver",
+    "db:down": "docker compose down",
+    "db:migrate": "npm run migrate -w backend",
+    "dev": "concurrently -n api,web -c blue,green \"npm run dev -w backend\" \"npm run dev -w frontend\"",
+    "dev:api": "npm run dev -w backend",
+    "dev:web": "npm run dev -w frontend",
+    "test": "npm test -w shared -w backend -w frontend",
+    "typecheck": "npm run typecheck -w shared -w backend -w frontend",
+    "build": "npm run build -w frontend",
+    "sample:pdf": "npm run sample:pdf -w backend"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.4"
+  }
+}
