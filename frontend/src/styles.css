@@ -1,0 +1,417 @@
+:root {
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --text: #1c2430;
+  --muted: #5d6878;
+  --border: #d9dee6;
+  --primary: #1f5fbf;
+  --primary-dark: #174a96;
+  --error: #b42318;
+  --error-bg: #fef3f2;
+  --success: #067647;
+  --success-bg: #ecfdf3;
+  --warning: #93370d;
+  --warning-bg: #fffaeb;
+  --autofill-bg: #eef4ff;
+  --radius: 8px;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+a {
+  color: var(--primary);
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin: 0.25rem 0 0;
+}
+
+h2 {
+  font-size: 1.1rem;
+  margin: 0 0 0.25rem;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+main.container {
+  padding-bottom: 48px;
+}
+
+.topbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.topbar .container {
+  height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.back-link {
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Botões */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:hover:not(:disabled) {
+  border-color: var(--primary);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button--primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.button--primary:hover:not(:disabled) {
+  background: var(--primary-dark);
+}
+
+/* Mensagens */
+.alert {
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin: 0 0 16px;
+  border: 1px solid transparent;
+}
+
+.alert--error {
+  background: var(--error-bg);
+  border-color: #fecdca;
+  color: var(--error);
+}
+
+.alert--success {
+  background: var(--success-bg);
+  border-color: #abefc6;
+  color: var(--success);
+}
+
+.alert--warning {
+  background: var(--warning-bg);
+  border-color: #fedf89;
+  color: var(--warning);
+}
+
+/* Escolha do modo de cadastro */
+.mode-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.mode-option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mode-option span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.mode-option--selected {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+/* Importação do PDF */
+.pdf-import {
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 20px;
+  background: #fafbfc;
+}
+
+.pdf-import__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin: 12px 0;
+}
+
+.pdf-import__controls input[type='file'] {
+  flex: 1 1 240px;
+  min-width: 0;
+}
+
+/* Formulário */
+.candidate-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.field--wide,
+.form-actions {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.required {
+  color: var(--error);
+}
+
+.optional {
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 0.85rem;
+}
+
+.badge {
+  margin-left: 8px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--autofill-bg);
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.field input,
+.field textarea,
+.search input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font: inherit;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus,
+.search input:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+  border-color: var(--primary);
+}
+
+.field .autofilled {
+  background: var(--autofill-bg);
+}
+
+.field [aria-invalid='true'] {
+  border-color: var(--error);
+}
+
+.field-error {
+  margin: 0;
+  color: var(--error);
+  font-size: 0.875rem;
+}
+
+.hint {
+  color: var(--muted);
+  text-align: right;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Listagem */
+.search {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.table-wrapper {
+  padding: 0;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  overflow-wrap: anywhere;
+}
+
+th {
+  font-size: 0.85rem;
+  color: var(--muted);
+  background: #fafbfc;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.empty {
+  text-align: center;
+}
+
+/* Detalhes */
+.details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 0;
+}
+
+.details__item--wide {
+  grid-column: 1 / -1;
+}
+
+.details dt {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.details dd {
+  margin: 4px 0 0;
+  overflow-wrap: anywhere;
+}
+
+.preserve-lines {
+  white-space: pre-line;
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 16px;
+  }
+
+  .candidate-form,
+  .details,
+  .mode-switch {
+    grid-template-columns: 1fr;
+  }
+
+  /* Tabela vira lista de cartões no celular. */
+  thead {
+    display: none;
+  }
+
+  tr {
+    display: block;
+    border-bottom: 1px solid var(--border);
+    padding: 8px 0;
+  }
+
+  td {
+    display: flex;
+    gap: 12px;
+    border: 0;
+    padding: 4px 16px;
+  }
+
+  td::before {
+    content: attr(data-label);
+    flex: 0 0 110px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+}
